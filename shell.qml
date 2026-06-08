@@ -1,0 +1,43 @@
+//@ pragma Env QSG_RENDER_LOOP=threaded
+//@ pragma Env QT_QUICK_FLICKABLE_WHEEL_DECELERATION=10000
+
+pragma ComponentBehavior: Bound
+import Quickshell
+import Quickshell.Io
+import QtQuick
+import qs.Layers as Lay
+import qs.Data as Dat
+
+ShellRoot {
+  Variants {
+    model: Quickshell.screens
+
+    Scope {
+      id: scopeRoot
+
+      required property ShellScreen modelData
+
+      LazyLoader {
+        activeAsync: Dat.Config.data.reservedShell
+
+        component: Lay.PseudoReserved {
+          modelData: scopeRoot.modelData
+        }
+      }
+
+
+      LazyLoader {
+        activeAsync: Dat.Config.data.mousePsystem
+
+        component: Lay.MouseParticles {
+          modelData: scopeRoot.modelData
+        }
+      }
+
+      Lay.Notch {
+        modelData: scopeRoot.modelData
+      }
+      }
+    }
+  }
+
