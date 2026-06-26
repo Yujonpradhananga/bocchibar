@@ -20,11 +20,11 @@ Text {
     width: timeText.contentWidth + 12
 
     onClicked: {
-      if (Dat.Globals.notchState == "FULLY_EXPANDED" && Dat.Globals.swipeIndex == 1) {
+      if (Dat.Globals.notchState == "FULLY_EXPANDED" && Dat.Globals.swipeIndex == 0) {
         Dat.Globals.notchState = "EXPANDED";
       } else {
         Dat.Globals.notchState = "FULLY_EXPANDED";
-        Dat.Globals.swipeIndex = 1;
+        Dat.Globals.swipeIndex = 0;
       }
     }
   }

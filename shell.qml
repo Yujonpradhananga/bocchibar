@@ -9,35 +9,36 @@ import qs.Layers as Lay
 import qs.Data as Dat
 
 ShellRoot {
-  Variants {
-    model: Quickshell.screens
+    Variants {
+        model: Quickshell.screens
 
-    Scope {
-      id: scopeRoot
+        Scope {
+            id: scopeRoot
 
-      required property ShellScreen modelData
+            required property ShellScreen modelData
 
-      LazyLoader {
-        activeAsync: Dat.Config.data.reservedShell
+            LazyLoader {
+                activeAsync: Dat.Config.data.reservedShell
 
-        component: Lay.PseudoReserved {
-          modelData: scopeRoot.modelData
+                component: Lay.PseudoReserved {
+                    modelData: scopeRoot.modelData
+                }
+            }
+
+            LazyLoader {
+                activeAsync: Dat.Config.data.mousePsystem
+
+                component: Lay.MouseParticles {
+                    modelData: scopeRoot.modelData
+                }
+            }
+
+            Lay.Notch {
+                modelData: scopeRoot.modelData
+            }
+
+            Lay.VolumeOsd {}
+            Lay.BrightnessOsd {}
         }
-      }
-
-
-      LazyLoader {
-        activeAsync: Dat.Config.data.mousePsystem
-
-        component: Lay.MouseParticles {
-          modelData: scopeRoot.modelData
-        }
-      }
-
-      Lay.Notch {
-        modelData: scopeRoot.modelData
-      }
-      }
     }
-  }
-
+}
